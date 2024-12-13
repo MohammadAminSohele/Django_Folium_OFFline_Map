@@ -1,26 +1,46 @@
 {% extends 'shared/_MainLayout.html' %}
+{% load static %}
 
+{% block title %}
+    شهر پردیس
+{% endblock title %}
 
 {% block content %}
-    
+    <div id="contact-page" class="container">
+        <div class="bg">
+            <div class="row">
+                <div class="container">
+                    <div class="col-sm-12" style="overflow: hidden; margin-bottom: 40px">    			   			
+                        <h2 class="title text-center">تمـاس با مـا</h2>    	
+                            <div id="gmap" class="contact-map">
+                                {% if map %}
+                                    <h2>پردیس</h2>
+                                    <div>{{ map|safe }}</div>
+                                {% endif %}
+                            </div>
+                    </div>
+                </div>
+                </div>    	
+            <div class="row">  	
+                <div class="col-sm-8">
+                    <div class="contact-form">
+                        <h2 class="title text-center">با ما در ارتباط باشیـد</h2>
+                        <div class="status alert alert-success" style="display: none"></div>
+                        <form id="main-contact-form" class="contact-form row" name="contact-form" method="post">
+                            {% csrf_token %}
+                            <div class="form-group col-md-6">
+                                {{form.lat}}
+                            </div>
+                            <div class="form-group col-md-6">
+                                {{form.long}}
+                            </div>
+                            <div class="form-group col-md-12">
+                                <input type="submit" name="submit" class="btn btn-primary pull-right" value="نمایش بر روی نقشه">
+                            </div>
+                        </form>
+                    </div>
+                </div> 			
+            </div>  
+        </div>	
+    </div>
 {% endblock content %}
-    
-
-{% comment %} <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Show on Map</button>
-    </form>
-    {% if map %}
-        <h2>Map</h2>
-        <div>{{ map|safe }}</div>
-    {% endif %}
-</body>
-</html> {% endcomment %}
