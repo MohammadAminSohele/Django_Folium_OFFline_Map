@@ -22,8 +22,8 @@ from django.conf.urls.static import static
 from .import settings
 
 urlpatterns = [
-    path('',Show_cordination_Pardis,name='Show_cordination_Pardis'),
-    path('Tehran',Show_cordination_Tehran,name='Show_cordination_Tehran'),
+    path('',Show_cordination_Tehran,name='Show_cordination_Tehran'),
+    path('Pardis',Show_cordination_Pardis,name='Show_cordination_Pardis'),
     path('Bomehen',Show_cordination_Bomehen,name='Show_cordination_Bomehen'),
 
     path('admin/', admin.site.urls),
